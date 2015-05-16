@@ -4,9 +4,38 @@
 
 `cross-json` will compare the property keys for *every combination of two files* that gets passed in the arguments. Please note that, in order to function properly, file **A** and file **B** will need to be compared twice: On the first run, we check if each of **A**'s properties is available in **B**. The second time, we'll have to do the opposite. Only if this succeeds do **A** and **B** contain the exact same properties.
 
-## Usage examples
+## Usage example
 
 For instance, this can be useful to check whether your JSON-based internationalization files contain each translation key for every language.
+
+Suppose you have the following JSON files:
+
+### en_US.json
+```json
+{
+	"TIME_DIFFERENCE": "{{ value }} {{ unit }} ago",
+	"I18N": "internationalization"
+}
+### en_GB.json
+```json
+{
+	"TIME_DIFFERENCE": "{{ value }} {{ unit }} ago",
+	"I18N": "internationalisation"
+}
+### de_DE.json
+```json
+{
+	"TIME_DIFFERENCE": "vor {{ value }} {{ unit }}",
+	"I18N": "Internationalisierung"
+}
+```
+### fr_FR.json
+```json
+{
+	"TIME_DIFFERENCE": "il y a {{ value }} {{ unit }}",
+	"I18N": "Internationalisation",
+	"MAIN_MENU": "menu principal"
+}
 
 ```bash
 $ ~/dev/awesome-project $ ./cross-json.js lang/*.json
