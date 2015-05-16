@@ -43,12 +43,14 @@ Suppose you have the following JSON files:
 }
 ```
 
+We can now deduce which property keys are missing in which file using `cross-json` and easily fix our translation issue: 
+
 ```bash
 $ ~/dev/awesome-project $ ./cross-json.js lang/*.json
 de_DE.json is missing property "MAIN_MENU" (inferred from fr_FR.json)
 en_GB.json is missing property "MAIN_MENU" (inferred from fr_FR.json)
 en_US.json is missing property "MAIN_MENU" (inferred from fr_FR.json)
-$  ~/dev/awesome-project $
+$ ~/dev/awesome-project $
 ```
 ## Limitations
 
