@@ -16,12 +16,16 @@ Suppose you have the following JSON files:
 	"TIME_DIFFERENCE": "{{ value }} {{ unit }} ago",
 	"I18N": "internationalization"
 }
+```
+
 ### en_GB.json
 ```json
 {
 	"TIME_DIFFERENCE": "{{ value }} {{ unit }} ago",
 	"I18N": "internationalisation"
 }
+```
+
 ### de_DE.json
 ```json
 {
@@ -29,6 +33,7 @@ Suppose you have the following JSON files:
 	"I18N": "Internationalisierung"
 }
 ```
+
 ### fr_FR.json
 ```json
 {
@@ -36,6 +41,7 @@ Suppose you have the following JSON files:
 	"I18N": "Internationalisation",
 	"MAIN_MENU": "menu principal"
 }
+```
 
 ```bash
 $ ~/dev/awesome-project $ ./cross-json.js lang/*.json
