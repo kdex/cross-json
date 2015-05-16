@@ -11,7 +11,7 @@ Note that currently, the cross-comparison is only done in a shallow manner. If y
 
 For instance, this can be useful to check whether your JSON-based internationalization files contain each translation key for every language.
 
-```js
+```bash
 $ ~/dev/awesome-project $ iojs cross-json.js lang/*.json
 de_DE.json is missing property "MAIN_MENU" (inferred from fr_FR.json)
 en_GB.json is missing property "MAIN_MENU" (inferred from fr_FR.json)
