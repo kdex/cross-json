@@ -38,7 +38,7 @@ Suppose you have the following JSON files:
 ```json
 {
 	"TIME_DIFFERENCE": "il y a {{ value }} {{ unit }}",
-	"I18N": "Internationalisation",
+	"I18N": "internationalisation",
 	"MAIN_MENU": "menu principal"
 }
 ```
