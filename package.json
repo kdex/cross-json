@@ -27,7 +27,7 @@
     "url": "https://github.com/kdex/cross-json/issues"
   },
   "homepage": "https://github.com/kdex/cross-json#readme",
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^1.0.0"
   }
 }
