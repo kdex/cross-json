@@ -52,6 +52,3 @@ en_GB.json is missing property "MAIN_MENU" (inferred from fr_FR.json)
 en_US.json is missing property "MAIN_MENU" (inferred from fr_FR.json)
 $ ~/dev/awesome-project $
 ```
-## Limitations
-
-Note that currently, the cross-comparison is only done in a shallow manner. If you need a deep check of properties, either flatten your data yourself or create a pull request to support this.
