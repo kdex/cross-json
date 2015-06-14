@@ -12,6 +12,38 @@ let help =
 function displayHelp() {
 	console.log(help);
 }
+function compare(a, b) {
+	let fileA = a.file;
+	let fileB = b.file;
+	let jsonA = a.json;
+	let jsonB = b.json;
+	let prefixA = a.prefix || "";
+	let prefixB = b.prefix || "";
+	for (let property in jsonA) {
+		let propertyA = jsonA[property];
+		let propertyB = jsonB[property];
+		let typeA = typeof propertyA;
+		let typeB = typeof propertyB;
+		/* Missing properties */
+		if (propertyB === undefined) {
+			console.log(`${chalk.yellow.bold(fileB)} is missing property ${chalk.red.bold(`"${prefixA}${property}"`)} (inferred from ${chalk.yellow.bold(fileA)})`);
+		}
+		if (!(typeB === "object" && !jsonB.hasOwnProperty(property))) {
+			/* If A contains an object, we need to compare more deeply */
+			if (typeA === "object") {
+				compare({
+					file: fileA,
+					json: propertyA || {},
+					prefix: `${prefixA}${property}.`
+				}, {
+					file: fileB,
+					json: propertyB || {},
+					prefix: `${prefixB}${property}.`
+				});
+			}
+		}
+	}
+}
 Promise.all(process.argv.map(function(a, i, args) {
 	if (args.length === 2) {
 		displayHelp();
@@ -108,11 +140,13 @@ Promise.all(process.argv.map(function(a, i, args) {
 					let comparisonFile = jsonContent[j].element.path.substr(jsonContent[j].element.path.lastIndexOf("/") + 1);
 					let sourceJSON = content.json;
 					let destinationJSON = jsonContent[j].json;
-					for (let property in content.json) {
-						if (!destinationJSON.hasOwnProperty(property)) {
-							console.log(`${chalk.yellow.bold(comparisonFile)} is missing property ${chalk.red.bold(`"${property}"`)} (inferred from ${chalk.yellow.bold(sourceFile)})`);
-						}
-					}
+					compare({
+						file: sourceFile,
+						json: content.json
+					}, {
+						file: comparisonFile,
+						json: destinationJSON
+					});
 				}
 			});
 		});
