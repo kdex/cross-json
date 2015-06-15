@@ -2,7 +2,7 @@
 
 ## How it works
 
-`cross-json` will compare the property keys for *every combination of two files* that gets passed in the arguments. Please note that, in order to function properly, file **A** and file **B** will need to be compared twice: On the first run, we check if each of **A**'s properties is available in **B**. The second time, we'll have to do the opposite. Only if this succeeds do **A** and **B** contain the exact same properties.
+`cross-json` will deeply compare the property keys for *every combination of two files* that gets passed in the arguments. Please note that, in order to function properly, file **A** and file **B** will need to be compared twice: On the first run, we check if each of **A**'s properties is available in **B**. The second time, we'll have to do the opposite. Only if this succeeds do **A** and **B** contain the exact same properties.
 
 ## Usage example
 
@@ -43,7 +43,7 @@ Suppose you have the following JSON files:
 }
 ```
 
-We can now deduce which property keys are missing in which file using `cross-json` and easily fix our translation issue: 
+We can now deduce which property keys are missing in which file using `cross-json` and easily fix our translation issue:
 
 ```bash
 $ ~/dev/awesome-project $ ./cross-json.js lang/*.json
