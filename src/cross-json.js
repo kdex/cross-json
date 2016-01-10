@@ -94,3 +94,6 @@ export async function crossCompare(...paths) {
 		}
 	}
 }
+export default {
+	crossCompare
+};
