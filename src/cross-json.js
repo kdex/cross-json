@@ -1,4 +1,5 @@
 "use strict";
+import "babel-polyfill";
 import chalk from "chalk";
 import fsp from "fs-promise";
 import path from "path";

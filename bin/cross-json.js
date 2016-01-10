@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-require("../dist/cross-json.js");
+"use strict";
+let crossJSON = require("../dist/cross-json.js");
+crossJSON.crossCompare(...process.argv.slice(2));
