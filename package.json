@@ -37,6 +37,7 @@
   },
   "homepage": "https://github.com/kdex/cross-json#readme",
   "dependencies": {
+    "babel-polyfill": "^6.3.14",
     "chalk": "^1.0.0",
     "fs-promise": "^0.3.1"
   },
