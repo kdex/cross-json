@@ -58,4 +58,3 @@ At the moment, this project has an [inline documentation](https://github.com/kde
 
 ## Build tools
 - [gulp-cross-json](https://github.com/kdex/gulp-cross-json/)
-- [grunt-cross-json](https://github.com/kdex/grunt-cross-json/)
