@@ -1,6 +1,6 @@
 {
   "name": "cross-json",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An npm module that reports property differences between JSON files. This can be useful to check whether your JSON-based internationalization files contain every translation key for every language, for instance.",
   "main": "dist/cross-json.js",
   "files": [
