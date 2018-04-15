@@ -9,10 +9,10 @@ import { FILE, DIRECTORY } from "./symbols.js";
 * @param {Object} b An object with the same structure to compare "a" to
 */
 function compare(a, b) {
-	let [fileA, fileB, jsonA, jsonB] = [a.file, b.file, a.json, b.json];
-	let [prefixA, prefixB] = [a.prefix || "", b.prefix || ""];
-	for (let property in jsonA) {
-		let [propertyA, propertyB] = [jsonA[property], jsonB[property]];
+	const [fileA, fileB, jsonA, jsonB] = [a.file, b.file, a.json, b.json];
+	const [prefixA, prefixB] = [a.prefix || "", b.prefix || ""];
+	for (const property in jsonA) {
+		const [propertyA, propertyB] = [jsonA[property], jsonB[property]];
 		/* Check if "b" misses the property inferred from "a" */
 		if (!jsonB.hasOwnProperty(property)) {
 			console.log(`${chalk.yellow.bold(fileB)} is missing property ${chalk.red.bold(`"${prefixA}${property}"`)} (inferred from ${chalk.yellow.bold(fileA)})`);
@@ -39,11 +39,11 @@ function compare(a, b) {
 * @return A promise that resolves when the comparison is finished
 */
 export async function crossCompare(...paths) {
-	let [extendedStats, jsonContents] = [new Map(), new Map()];
-	for (let filePath of paths) {
+	const [extendedStats, jsonContents] = [new Map(), new Map()];
+	for (const filePath of paths) {
 		try {
 			/* Transform all paths to absolute paths */
-			let path = await fs.realpath(filePath.replace(/^~/g, getHomeDirectory()));
+			const path = await fs.realpath(filePath.replace(/^~/g, getHomeDirectory()));
 			/* Then, check out a small section of the file's extendedStats */
 			extendedStats.set(filePath, await extendedStat(path));
 		}
@@ -67,18 +67,17 @@ export async function crossCompare(...paths) {
 		}
 		try {
 			/* Check if all files contain JSON */
-			let json = JSON.parse(content);
-			jsonContents.set(filePath, json);
+			jsonContents.set(filePath, JSON.parse(content));
 		}
 		catch (e) {
 			throw Error(`Invalid JSON in file ${filePath}: ${e}`);
 		}
 	}
 	/* Compare each file with each other file */
-	for (let [sourcePath, sourceJSON] of jsonContents) {
-		let sourceFile = path.basename(sourcePath);
-		for (let [comparisonPath, comparisonJSON] of jsonContents) {
-			let comparisonFile = path.basename(comparisonPath);
+	for (const [sourcePath, sourceJSON] of jsonContents) {
+		const sourceFile = path.basename(sourcePath);
+		for (const [comparisonPath, comparisonJSON] of jsonContents) {
+			const comparisonFile = path.basename(comparisonPath);
 			/* Don't compare a file to itself */
 			if (sourcePath === comparisonPath) {
 				continue;

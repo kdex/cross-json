@@ -5,12 +5,12 @@ export function getHomeDirectory() {
 };
 export async function extendedStat(path) {
 	const stats = await fs.stat(path);
-	const type =
-		stats.isFile() ? FILE :
-		stats.isDirectory() ? DIRECTORY :
-		throw `${path} is not a regular file`;
-	return ({
+	return {
 		path,
-		type
-	});
+		type: stats.isFile()
+			? FILE
+			: stats.isDirectory()
+				? DIRECTORY
+				: throw `${path} is not a regular file`
+	};
 }

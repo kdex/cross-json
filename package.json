@@ -24,7 +24,7 @@
   },
   "scripts": {
     "compile": "babel src -d dist",
-    "prepublish": "npm run compile"
+    "prepublishOnly": "npm run compile"
   },
   "repository": {
     "type": "git",
