@@ -38,12 +38,13 @@ We can now deduce which property keys are missing in which file using `cross-jso
 <p align="center">
     <img src="https://kdex.de/pub/cross-json.png">
 </p>
+
 ## API
 The same can also be achieved using the `cross-json` API like so:
 ```js
 import { crossCompare } from "cross-json";
-let directory = "~/dev/awesome-project/lang/";
-let files = [
+const directory = "~/dev/awesome-project/lang/";
+const files = [
 	`${directory}/de_DE.json`,
 	`${directory}/en_GB.json`,
 	`${directory}/en_US.json`,
