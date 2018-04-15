@@ -1,7 +1,5 @@
-"use strict";
-import "babel-polyfill";
 import chalk from "chalk";
-import fsp from "fs-promise";
+import { fs } from "mz";
 import path from "path";
 import { getHomeDirectory, extendedStat } from "./fs-helpers.js";
 import { FILE, DIRECTORY } from "./symbols.js";
@@ -45,7 +43,7 @@ export async function crossCompare(...paths) {
 	for (let filePath of paths) {
 		try {
 			/* Transform all paths to absolute paths */
-			let path = await fsp.realpath(filePath.replace(/^~/g, getHomeDirectory()));
+			let path = await fs.realpath(filePath.replace(/^~/g, getHomeDirectory()));
 			/* Then, check out a small section of the file's extendedStats */
 			extendedStats.set(filePath, await extendedStat(path));
 		}
@@ -56,7 +54,7 @@ export async function crossCompare(...paths) {
 		try {
 			/* Treat files */
 			if (extendedStats.get(filePath).type === FILE) {
-				content = await fsp.readFile(extendedStats.get(filePath).path, "utf-8");
+				content = await fs.readFile(extendedStats.get(filePath).path, "utf-8");
 			}
 			/* Treat directories */
 			else if (extendedStats.get(filePath).type === DIRECTORY) {
